@@ -1,61 +1,45 @@
 public class Main {
     public static void main(String[] args) {
-        //task1();
-        //task2();
-        task3();
+        System.out.println(visokosniyCheck(2001));
+        System.out.println(telephoneCheck(0, 2012));
+        System.out.println(deliveryTime(95));
     }
 
-    public static void task1() {
-        int year = 2000;
-        if (visokosniyCheck(year) == 1) {
-            System.out.println(year + " год является високосным");
-        } else System.out.println(year + " год не является високосным");
-    }
 
-    public static int visokosniyCheck(int year) {
+    public static String visokosniyCheck(int year) {
         if ((year % 100 != 0 || year % 400 == 0) && (year % 4 == 0)) {
-            return 1;
+            return (year + " год является високосным");
         }
-        return 0;
+        return (year + " год не является високосным");
     }
 
 
-    public static void task2() {
-        int clientOS = 1;
-        int clientDeviceYear = 2013;
-
-        System.out.println("Установите " + telephoneYearCheck(clientDeviceYear) + "версию приложения для " + telephoneOSCheck(clientOS) + " по ссылке");
-    }
-
-    public static String telephoneOSCheck(int OSType) {
-        if (OSType == 1) {
-            return "Android";
-        }
-        return "IOS";
-    }
-
-    public static String telephoneYearCheck(int telephoneYear) {
+    public static String telephoneCheck(int clientOS, int clientDeviceYear) {
         int currentYear = 2022; // Локал дата не работает
-        if (telephoneYear < currentYear) {
-            return "облегченную ";
+        String clientOS2 = "";
+        String clientDeviceYear2 = "";
+        if (clientOS == 1) {
+            clientOS2 = "Android";
+        } else {
+            clientOS2 = "IOS";
         }
-        return "";
+
+        if (clientDeviceYear < currentYear) {
+            clientDeviceYear2 = "облегченную ";
+        }
+        clientDeviceYear2 = "";
+
+        return ("Установите " + clientDeviceYear2 + "версию приложения для " + clientOS2 + " по ссылке");
     }
 
-
-    public static void task3() {
-        int deliveryDistance = 95;
-        System.out.println("Потребуется дней: " + deliveryTime(deliveryDistance));
-    }
-
-    public static int deliveryTime(int deliveryDistance) {
+    public static String deliveryTime(int deliveryDistance) {
         int deliveryMinDistance = 20;
         int deliveryInterval = 40;
         int deliveryTimeD = 1;
         if (deliveryDistance <= deliveryMinDistance) {
-            return deliveryTimeD;
+            return ("Потребуется дней: " + deliveryTimeD);
         } else {
-            return deliveryTimeD + deliveryDistance / deliveryInterval;
+            return ("Потребуется дней: " + (deliveryTimeD + deliveryDistance / deliveryInterval));
         }
     }
 
